@@ -3,6 +3,12 @@ package Controller;
 
 import Model.*;
 import View.*;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Controller {
@@ -26,21 +32,20 @@ this.tasksList=tasksList;
 
 
 
-public void inputFromUser() {
-    Scanner inputUserOption = new Scanner(System.in);
-    String userOption = inputUserOption.nextLine();
+public String readUserInput() {
+    Scanner userInput = new Scanner(System.in);
+    String userChoice = userInput.nextLine();
+return userChoice;
+}
 
-
-    switch (userOption) {
-
-
+public void userChoice(){
+       String s=readUserInput();
+    switch (s) {
         case "1":
-             callShowTaskList(tasksList );
-
+             callShowTaskList(tasksList.getArrayList() );
             break;
         case "2":
             callCreateNewTask();
-
             break;
         case "3":
             break;
@@ -52,38 +57,39 @@ public void inputFromUser() {
             break;
         default:
             System.out.println("please enter a valid option!! ");
-           callInputFromUser();
+          callUserChoice();
             break;
 
     }
 }
 
-public void callInputFromUser(){
+public void callUserChoice(){
 
-        inputFromUser();
+    userChoice();
 }
+    public void callShowTaskList(ArrayList arrayList){
 
-
-
-
-    public void callShowTaskList(TasksList tasksList){
-
+        arrayList=tasksList.getArrayList();
+        arrayList = om.sortListByDate(arrayList);
         om.showTaskList(tasksList);
         userInterface.options();
-        inputFromUser();
+        userChoice();
 
     }
 
     public void callCreateNewTask(){
-        TaskDTO newTask=new TaskDTO("tit","date",false,"pro");
+        TaskDTO newTask;
         newTask=om.createNewTask();
         tasksList.addtoarray(newTask);
         userInterface.options();
-        inputFromUser();
+        userChoice();
     }
 
 
+    public ArrayList<TaskDTO> callSortListByDate() {
 
+       return om.sortListByDate(tasksList.getArrayList());
+    }
 
 
 

@@ -1,6 +1,9 @@
 package Model;
 
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.Scanner;
 
 public class OperationsManager {
@@ -16,7 +19,7 @@ public class OperationsManager {
         {
             int j=i+1;
             System.out.println("The task No "+ j +" info is: ");
-            System.out.println("Title: "+tasksList.getArrayList().get(i).getTaskTitle() +"  ,Date: "+ tasksList.getArrayList().get(i).getTaskDate()+
+            System.out.println("Title: "+tasksList.getArrayList().get(i).getTaskTitle() +"  ,Date: "+ tasksList.getArrayList().get(i).getDateToString()+
                     "  ,Status: " +tasksList.getArrayList().get(i).getTaskStatus()+ "  ,Project: "+  tasksList.getArrayList().get(i).getTaskProject());
             System.out.println("\n");
         }
@@ -24,27 +27,36 @@ public class OperationsManager {
 
         }
 
+    public ArrayList<TaskDTO> sortListByDate(ArrayList arrayList) {
+        if (( arrayList== null) || (arrayList.isEmpty())) {
+            return new ArrayList<>();
+        }
+        Collections.sort(arrayList);
+        return arrayList;
+    }
+
 
 
 
     public TaskDTO  createNewTask() {
 
 
-        TaskDTO newTask;
+        TaskDTO newTask=new TaskDTO();
 
         Scanner inputNewTask = new Scanner(System.in);
 
         System.out.println("please enter task title  ");
         String newTaskTitle = "" + inputNewTask.nextLine();
 
-        System.out.println("please enter task date  ");
-        String newTaskDate = "" + inputNewTask.nextLine();
+        System.out.println("please enter task due date >> dd.MM.yyyy ");
+        String dueDateFromUser = "" + inputNewTask.nextLine();
 
+        Date newTaskDueDate=newTask.getStringToDate(dueDateFromUser);
 
         System.out.println("please  enter task project name   ");
         String newTaskProjectName = "" + inputNewTask.nextLine();
 
-        newTask = new TaskDTO(newTaskTitle, newTaskDate, false, newTaskProjectName);
+        newTask = new TaskDTO(newTaskTitle, newTaskDueDate, false, newTaskProjectName);
 
 return newTask;
     }

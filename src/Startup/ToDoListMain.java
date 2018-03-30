@@ -22,7 +22,7 @@ public class ToDoListMain {
         UserInterface UI=new UserInterface();
         Controller ctrl=new Controller(tasksList);
         UI.welcome();
-        ctrl.inputFromUser();
+        ctrl.userChoice();
 
        hr.saveFile(tasksList);
 

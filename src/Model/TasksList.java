@@ -10,26 +10,25 @@ public class TasksList implements Serializable{
 
 
 
-    ArrayList<TaskDTO> arrayList;
+    ArrayList<TaskDTO> tasksArrayList;
 
 
 
     public TasksList() {
 
-
-        arrayList = new ArrayList<>();
+        tasksArrayList = new ArrayList<>();
 
 
     }
 
     public ArrayList<TaskDTO> getArrayList() {
-        return arrayList;
+        return tasksArrayList;
     }
 
     public void addtoarray(TaskDTO dto)
     {
 
-        arrayList.add(dto);
+        tasksArrayList.add(dto);
 
 
     }
