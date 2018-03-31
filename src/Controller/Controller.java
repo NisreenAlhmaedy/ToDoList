@@ -1,102 +1,82 @@
 package Controller;
 
 
-import Model.*;
-import View.*;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
+import Model.OperationsManager;
+import View.UserInterface;
 import java.util.Scanner;
 
 public class Controller {
+    private Scanner input = new Scanner(System.in);
+   private OperationsManager om;
+  private  UserInterface UI;
 
-
-    TasksList tasksList;
-    OperationsManager om=new OperationsManager();
-    UserInterface userInterface=new UserInterface();
-
-
-    public Controller(){
-
-
+    public Controller() {
+       om = new OperationsManager();
+       UI = new UserInterface();
     }
+public void readUserInput() {
+        UI.options();
+    String userInput = input.nextLine();
 
-    public Controller(TasksList tasksList){
-this.tasksList=tasksList;
-
-    }
-
-
-
-
-public String readUserInput() {
-    Scanner userInput = new Scanner(System.in);
-    String userChoice = userInput.nextLine();
-return userChoice;
-}
-
-public void userChoice(){
-       String s=readUserInput();
-    switch (s) {
+    switch (userInput) {
         case "1":
-             callShowTaskList(tasksList.getArrayList() );
+            om.showTaskList();
+         readUserInput();
             break;
         case "2":
-            callCreateNewTask();
+           om.createNewTask();
+        readUserInput();
             break;
         case "3":
+            edit();
             break;
         case "Q":
+            om.save();
             System.out.println(" goodbye, have a nice day");
             break;
         case "q":
+            om.save();
             System.out.println(" goodbye, have a nice day");
             break;
         default:
             System.out.println("please enter a valid option!! ");
-          callUserChoice();
+            readUserInput();
             break;
-
     }
 }
 
-public void callUserChoice(){
+private void edit(){
 
-    userChoice();
-}
-    public void callShowTaskList(ArrayList arrayList){
+        UI.editMenu();
+    String userInput = input.nextLine();
 
-        arrayList=tasksList.getArrayList();
-        arrayList = om.sortListByDate(arrayList);
-        om.showTaskList(tasksList);
-        userInterface.options();
-        userChoice();
-
+    if(userInput.equals("update")){
+        om.updateTask();
+       edit();
+    }
+    else if (userInput.equals("mark as done")){
+        om.markAsDone();
+        edit();
+    }
+    else if (userInput.equals("remove")){
+        om.removeTask();
+       edit();
+    }
+    else if (userInput.equals("back")){
+        readUserInput();
     }
 
-    public void callCreateNewTask(){
-        TaskDTO newTask;
-        newTask=om.createNewTask();
-        tasksList.addtoarray(newTask);
-        userInterface.options();
-        userChoice();
+    else {
+        System.out.println("please select an option from menu !! ");
+       edit();
     }
-
-
-    public ArrayList<TaskDTO> callSortListByDate() {
-
-       return om.sortListByDate(tasksList.getArrayList());
-    }
-
-
-
-
-
-
-
-
+  }
 
 }
+
+
+
+
+
+
+

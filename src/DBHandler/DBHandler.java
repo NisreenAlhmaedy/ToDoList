@@ -23,24 +23,17 @@ public class DBHandler {
         if (new File("Info.ser").exists()) {
             try {
                 FileInputStream fis = new FileInputStream("Info.ser");
-
                 ObjectInputStream ois = new ObjectInputStream(fis);
-
                 tasksList = (TasksList) ois.readObject();
-
                 fis.close();
                 ois.close();
-
                // System.out.println("Deserialize data has been created in the memory");
-
             } catch (IOException | ClassNotFoundException ex) {
                 System.out.println(ex.getMessage());
             }
         }
-
         return tasksList;
     }
-
 /* Applied the serialization to Save the state of the TasksList object that was
  *  created in memory in an external file "Info.ser" then we can restore it when
  *  the program starts again
@@ -48,29 +41,20 @@ public class DBHandler {
  *@param the current tasks list
  */
     public void saveFile(TasksList tasksList) {
-
         try
         {
-
-
             FileOutputStream fos = new FileOutputStream("Info.ser");
-
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-
             oos.writeObject(tasksList);
-
             oos.close();
             fos.flush();
             fos.close();
-
             //System.out.println("Serialized data has been saved in the project in a file called Info.ser");
         }
         catch(IOException ex)
         {
             System.out.println(ex.getMessage());
         }
-
-
     }
 
 
