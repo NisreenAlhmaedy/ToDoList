@@ -41,6 +41,11 @@ public class OperationsManager {
             System.out.println("Enter task due date >> dd.MM.yyyy ");
             String dueDateFromUser =input.nextLine();
             Date newDueDate = updatedTask.getStringToDate(dueDateFromUser);
+            while (newDueDate==null){
+               System.out.println("not valid date format .. try again!!");
+               dueDateFromUser =input.nextLine();
+                newDueDate = updatedTask.getStringToDate(dueDateFromUser);
+            }
             System.out.println("Enter task project name ");
             String newProjectName =input.nextLine();
             boolean sameStatus=tasksList.getArrayList().get(taskNo - 1).getTaskStatus();
@@ -104,9 +109,15 @@ System.out.println("\n");
 
         System.out.println("Enter task title  ");
         String taskTitle = input.nextLine();
+
         System.out.println("Enter task due date >> dd.MM.yyyy ");
         String dueDateFromUser =input.nextLine();
         Date taskDueDate = newTask.getStringToDate(dueDateFromUser);
+        while (taskDueDate==null){
+            System.out.println("not valid date format .. try again!!");
+             dueDateFromUser =input.nextLine();
+             taskDueDate = newTask.getStringToDate(dueDateFromUser);
+        }
         System.out.println("Enter task project name   ");
         String taskProjectName =input.nextLine();
         newTask = new TaskDTO(taskTitle, taskDueDate, false,taskProjectName);

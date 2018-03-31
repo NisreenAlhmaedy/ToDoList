@@ -75,13 +75,14 @@ public Date getDueDate(){
 
 public Date getStringToDate(String dueDateFromUser)  {
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-    Date d =new Date();
+    Date date ;
     try {
-        d = dateFormat.parse(dueDateFromUser);
+        date = dateFormat.parse(dueDateFromUser);
     } catch (ParseException e) {
-        e.printStackTrace();
+      //  e.printStackTrace();
+        date=null;
     }
-    return d;
+    return date;
     }
     @Override
     public int compareTo(TaskDTO task) {
