@@ -144,13 +144,8 @@ System.out.println("\n");
         newTask = new TaskDTO(taskTitle, taskDueDate, false,taskProjectName);
         tasksList.addToArrayList(newTask);
         System.out.println("your task created and added to list successfully!! \n");
-
-
     }
     public void save() {
         hr.saveFile(tasksList);
-
     }
-
-
 }

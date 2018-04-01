@@ -26,21 +26,6 @@ public class ToDoListMain {
       ctrl.readUserInput();
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 
