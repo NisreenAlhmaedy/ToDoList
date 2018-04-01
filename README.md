@@ -1,5 +1,5 @@
 
-##ToDoList
+#ToDoList
 
 To do list application is an individual project assignment for **Software Development Academy @ KTH**
 
