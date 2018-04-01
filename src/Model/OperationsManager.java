@@ -5,6 +5,17 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Scanner;
 
+
+/*
+ *To Do List Application
+ *@author Nisreen Alhmaedy
+ *@Version  2018
+ *
+ */
+
+/**
+ * Perform the desired work
+ */
 public class OperationsManager {
 
    private DBHandler hr;
@@ -13,10 +24,17 @@ public class OperationsManager {
    private Scanner inputINT = new Scanner(System.in);
    private int taskNo;
 
+    /**
+     * Creates a new instance.
+     */
     public OperationsManager() {
         hr = new DBHandler();
         tasksList = hr.loadFile();
     }
+
+    /**
+     * change the status of exist task from Not Done to Done
+     */
     public void markAsDone() {
         System.out.println("enter the task number which you want to mark as done");
          taskNo = inputINT.nextInt();
@@ -28,8 +46,11 @@ public class OperationsManager {
             markAsDone();
         }
     }
-    public void updateTask() {
 
+    /**
+     * replaced name, due date, project name of exist task
+     */
+    public void updateTask() {
         TaskDTO updatedTask = new TaskDTO();
         System.out.println("enter the task number which you want to update");
         taskNo = inputINT.nextInt();
@@ -46,7 +67,7 @@ public class OperationsManager {
                dueDateFromUser =input.nextLine();
                 newDueDate = updatedTask.getStringToDate(dueDateFromUser);
             }
-            System.out.println("Enter task project name ");
+            System.out.println("Enter project name for that task to belong to ");
             String newProjectName =input.nextLine();
             boolean sameStatus=tasksList.getArrayList().get(taskNo - 1).getTaskStatus();
             updatedTask = new TaskDTO(newTaskTitle, newDueDate,sameStatus , newProjectName);
@@ -57,7 +78,6 @@ public class OperationsManager {
             System.out.println("Not found !! enter exist task ");
             updateTask();
         }
-
     }
     public void removeTask() {
         System.out.println("enter the task number which you want to remove");
@@ -95,6 +115,10 @@ public class OperationsManager {
 
 System.out.println("\n");
     }
+
+/**
+ *@return tasks list sorted by date
+ */
     private ArrayList<TaskDTO> sortListByDate() {
         if ((tasksList.getArrayList() == null) || (tasksList.getArrayList().isEmpty())) {
             return new ArrayList<>();
@@ -102,14 +126,11 @@ System.out.println("\n");
         Collections.sort(tasksList.getArrayList());
         return tasksList.getArrayList();
     }
+
     public void createNewTask() {
-
-
         TaskDTO newTask = new TaskDTO();
-
         System.out.println("Enter task title  ");
         String taskTitle = input.nextLine();
-
         System.out.println("Enter task due date >> dd.MM.yyyy ");
         String dueDateFromUser =input.nextLine();
         Date taskDueDate = newTask.getStringToDate(dueDateFromUser);
@@ -118,7 +139,7 @@ System.out.println("\n");
              dueDateFromUser =input.nextLine();
              taskDueDate = newTask.getStringToDate(dueDateFromUser);
         }
-        System.out.println("Enter task project name   ");
+        System.out.println("Enter project name for that task to belong to   ");
         String taskProjectName =input.nextLine();
         newTask = new TaskDTO(taskTitle, taskDueDate, false,taskProjectName);
         tasksList.addToArrayList(newTask);

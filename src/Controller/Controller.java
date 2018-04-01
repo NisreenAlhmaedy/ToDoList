@@ -1,19 +1,31 @@
 package Controller;
-
+/*
+ *To Do List Application
+ *@author Nisreen Alhmaedy
+ *@Version  2018
+ */
 
 import Model.OperationsManager;
 import View.UserInterface;
 import java.util.Scanner;
 
+/**
+ * Read the commands from user and call
+ * methods in the model
+ */
 public class Controller {
-    private Scanner input = new Scanner(System.in);
+   private Scanner input = new Scanner(System.in);
    private OperationsManager om;
-  private  UserInterface UI;
+   private UserInterface UI;
 
+    /**
+     * Creates a new instance.
+     */
     public Controller() {
        om = new OperationsManager();
        UI = new UserInterface();
     }
+
 public void readUserInput() {
         UI.options();
     String userInput = input.nextLine();
@@ -65,13 +77,11 @@ private void edit(){
     else if (userInput.equals("back")){
         readUserInput();
     }
-
     else {
         System.out.println("please select an option from menu !! ");
        edit();
     }
   }
-
 }
 
 

@@ -1,5 +1,16 @@
 package View;
 
+
+/*
+ *To Do List Application
+ *@author Nisreen Alhmaedy
+ *@Version  2018
+ */
+
+/**
+ * contains the interfaces of the application
+ * that will appear to the user
+ */
 public class UserInterface {
 
     public void welcome() {
@@ -26,7 +37,5 @@ public class UserInterface {
         System.out.println(" plz select >>>>> update,mark as done or remove)");
         System.out.println("if you want back to Home Page select  >>>>>> back");
     }
-
-
  }
 

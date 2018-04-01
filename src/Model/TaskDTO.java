@@ -1,5 +1,12 @@
 package Model;
 
+
+/*
+ *To Do List Application
+ *@author Nisreen Alhmaedy
+ *@Version  2018
+ *
+ */
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,14 +18,19 @@ public class TaskDTO implements Serializable , Comparable<TaskDTO>{
     private boolean status;
     private String project;
 
+    /**
+     * Creates a new instance.
+     */
    public TaskDTO(){
     }
 
-/*
+/**
+ *Creates a new instance.
+ *
  *@param title  task title.
  *@param dueDate the day the task must be finished.
- *@param status the current state of the task.
- *@param project the project the task belongs to.
+ *@param status the status that can be assigned to a task.
+ *@param project project which the task belong to.
  *
  */
     public TaskDTO(String title, Date dueDate , boolean status , String project ) {
@@ -27,21 +39,18 @@ public class TaskDTO implements Serializable , Comparable<TaskDTO>{
         this.status =status;
         this.title = title;
     }
-    /*
-     * @return the task title.
-     */
+
     public String getTaskTitle(){
         return title ;
     }
-    /*
-     * @return the task project which the task belong to.
+    /**
+     * @return project which the task belong to.
      */
     public String getTaskProject(){
         return project ;
     }
-    /*
-     * @return the task status.
-     */
+
+
     public boolean getTaskStatus(){
         return status;
     }
@@ -55,10 +64,8 @@ public class TaskDTO implements Serializable , Comparable<TaskDTO>{
         }
         else return "NOT Done";
         }
-public Date getDueDate(){
-        return dueDate;
-}
-/*
+
+/**
  *converting the due date from Date type to String type
  *@return due date as a String type
  */
@@ -66,13 +73,12 @@ public Date getDueDate(){
         return new SimpleDateFormat("dd.MM.yyyy").format(dueDate);
     }
 
-/*
+/**
  * converting the due date which is taken from the user as
  * a string type to Date type
- * @param due date as a String type
+ * @param dueDateFromUser date as a String type
  * @return due date as a Date type
 */
-
 public Date getStringToDate(String dueDateFromUser)  {
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
     Date date ;

@@ -10,12 +10,18 @@ import Model.*;
 /*
  *@author Nisreen Alhmaedy
  */
+
+
+/**
+ * Reads and writes data to file
+ */
 public class DBHandler {
 
-/*Applied the deserialization to restore the state of the
+/**
+ *Applied the deserialization to restore the state of the
  *Task List object that was saved in "Info.ser " file
  *
- * @ return task list that restored from memory
+ *@return tasksList that restored from memory
  */
     public TasksList loadFile() {
         TasksList tasksList=new TasksList() ;
@@ -34,11 +40,12 @@ public class DBHandler {
         }
         return tasksList;
     }
-/* Applied the serialization to Save the state of the TasksList object that was
+/**
+ *  Applied the serialization to Save the state of the TasksList object that was
  *  created in memory in an external file "Info.ser" then we can restore it when
  *  the program starts again
  *
- *@param the current tasks list
+ *@param tasksList the current tasks list
  */
     public void saveFile(TasksList tasksList) {
         try
