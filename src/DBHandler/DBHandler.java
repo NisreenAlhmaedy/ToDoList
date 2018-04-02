@@ -41,8 +41,8 @@ public class DBHandler {
         return tasksList;
     }
 /**
- *  Applied the serialization to Save the state of the TasksList object that was
- *  created in memory in an external file "Info.ser" then we can restore it when
+ *  Applied the serialization to save the state of the TasksList object that was
+ *  created in the memory in an external file "Info.ser" then we can restore it when
  *  the program starts again
  *
  *@param tasksList the current tasks list

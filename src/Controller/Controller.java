@@ -10,7 +10,7 @@ import View.UserInterface;
 import java.util.Scanner;
 
 /**
- * Read the commands from user and call
+ * Reads the commands from user and call
  * methods in the model
  */
 public class Controller {
@@ -32,26 +32,23 @@ public void readUserInput() {
 
     switch (userInput) {
         case "1":
-            om.showTaskList();
+            om.createNewTask();
          readUserInput();
             break;
         case "2":
-           om.createNewTask();
+           om.showTaskList();
         readUserInput();
             break;
         case "3":
             edit();
             break;
-        case "Q":
+        case "exit":
             om.save();
-            System.out.println(" goodbye, have a nice day");
+            System.out.println(" Goodbye! Have a nice day");
             break;
-        case "q":
-            om.save();
-            System.out.println(" goodbye, have a nice day");
-            break;
+
         default:
-            System.out.println("please enter a valid option!! ");
+            System.out.println("Please enter a valid option!! ");
             readUserInput();
             break;
     }

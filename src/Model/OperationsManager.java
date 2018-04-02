@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 
 /**
- * Perform the desired work
+ * Performs the desired work
  */
 public class OperationsManager {
 
@@ -36,58 +36,58 @@ public class OperationsManager {
      * change the status of exist task from Not Done to Done
      */
     public void markAsDone() {
-        System.out.println("enter the task number which you want to mark as done");
+        System.out.println("Enter the task number which you want to mark as done");
          taskNo = inputINT.nextInt();
         if (taskNo - 1 < tasksList.getArrayList().size()) {
             tasksList.getArrayList().get(taskNo-1).setStatusAsDone();
-            System.out.println("The task is done \n ");
+            System.out.println("The task is marked as done  \n ");
         } else{
-            System.out.println("Not found !! enter exist task ");
+            System.out.println("Not found !! Please enter exist task ");
             markAsDone();
         }
     }
 
     /**
-     * replaced name, due date, project name of exist task
+     * replace name, due date, project name of exist task
      */
     public void updateTask() {
         TaskDTO updatedTask = new TaskDTO();
-        System.out.println("enter the task number which you want to update");
+        System.out.println("Enter the task number which you want to update");
         taskNo = inputINT.nextInt();
 
         if (taskNo - 1 < tasksList.getArrayList().size()) {
 
-            System.out.println("Enter task title");
+            System.out.println("Enter the task title");
             String newTaskTitle =input.nextLine();
-            System.out.println("Enter task due date >> dd.MM.yyyy ");
+            System.out.println("Enter the task due date >> dd.MM.yyyy ");
             String dueDateFromUser =input.nextLine();
             Date newDueDate = updatedTask.getStringToDate(dueDateFromUser);
             while (newDueDate==null){
-               System.out.println("not valid date format .. try again!!");
+               System.out.println("Not valid date format .. Try again!!");
                dueDateFromUser =input.nextLine();
                 newDueDate = updatedTask.getStringToDate(dueDateFromUser);
             }
-            System.out.println("Enter project name for that task to belong to ");
+            System.out.println("Enter the project name for that task to belong to ");
             String newProjectName =input.nextLine();
             boolean sameStatus=tasksList.getArrayList().get(taskNo - 1).getTaskStatus();
             updatedTask = new TaskDTO(newTaskTitle, newDueDate,sameStatus , newProjectName);
             tasksList.getArrayList().set(taskNo - 1, updatedTask);
-            System.out.println("updated task replaced successfully!! \n ");
+            System.out.println("The task articles have been updated successfully!! \n ");
         }
         else {
-            System.out.println("Not found !! enter exist task ");
+            System.out.println("Not found !! Enter exist task ");
             updateTask();
         }
     }
     public void removeTask() {
-        System.out.println("enter the task number which you want to remove");
+        System.out.println("Enter the task number which you want to remove");
         taskNo = inputINT.nextInt();
 
         if (taskNo - 1 < tasksList.getArrayList().size()) {
             tasksList.getArrayList().remove(taskNo - 1);
-            System.out.println("The task removed successfully!! \n ");
+            System.out.println("The task is removed successfully!! \n ");
         } else{
-            System.out.println("Not found !! enter exist task ");
+            System.out.println("Not found !! Enter exist task ");
       removeTask();
         }
     }
@@ -101,14 +101,14 @@ public class OperationsManager {
                 Y = Y + 1;
             else X = X + 1;
         }
-        System.out.println(" U have  " + tasksList.getArrayList().size() + " task");
+        System.out.println(" You have  " + tasksList.getArrayList().size() + " task");
         System.out.println( X + " task to do and " + Y + " task are done! \n");
 
         int i;
         for (i = 0; i < tasksList.getArrayList().size(); i++) {
             int j = i + 1;
-            System.out.println("The task No " + j + " info is: ");
-            System.out.println("Title: " + sortListByDate().get(i).getTaskTitle() + "  ,Date: " + sortListByDate().get(i).getDateToString() +
+            System.out.println("The task number " + j + " info is: ");
+            System.out.println("Title: " + sortListByDate().get(i).getTaskTitle() + "  ,Due date: " + sortListByDate().get(i).getDateToString() +
                     "  ,Status: " + sortListByDate().get(i).getTaskStatusAsString() + "  ,Project: " + sortListByDate().get(i).getTaskProject());
             System.out.println("--------------------------------------------------------------------------------");
         }
@@ -129,21 +129,21 @@ System.out.println("\n");
 
     public void createNewTask() {
         TaskDTO newTask = new TaskDTO();
-        System.out.println("Enter task title  ");
+        System.out.println("Enter the task title  ");
         String taskTitle = input.nextLine();
-        System.out.println("Enter task due date >> dd.MM.yyyy ");
+        System.out.println("Enter the task due date >> dd.MM.yyyy ");
         String dueDateFromUser =input.nextLine();
         Date taskDueDate = newTask.getStringToDate(dueDateFromUser);
         while (taskDueDate==null){
-            System.out.println("not valid date format .. try again!!");
+            System.out.println("Not valid date format .. Please try again!!");
              dueDateFromUser =input.nextLine();
              taskDueDate = newTask.getStringToDate(dueDateFromUser);
         }
-        System.out.println("Enter project name for that task to belong to   ");
+        System.out.println("Enter the project name for that task to belong to   ");
         String taskProjectName =input.nextLine();
         newTask = new TaskDTO(taskTitle, taskDueDate, false,taskProjectName);
         tasksList.addToArrayList(newTask);
-        System.out.println("your task created and added to list successfully!! \n");
+        System.out.println("Your task is created and added to the list successfully!! \n");
     }
     public void save() {
         hr.saveFile(tasksList);

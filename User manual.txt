@@ -1,0 +1,45 @@
+User manual for ToDoList Applicatin.
+
+Start the Application and follow the user manual below :
+
+1. Add a new task option.
+
+a. To add a new task. Type “1” then press enter to choose “Add new task” option from the options menu.
+b. Enter the task title name then press enter.
+c. Enter the task’s due date like the following date form (dd.mm.yyyy) then press enter.
+d. Enter the task project name then press enter.
+
+
+2.Show task list option.
+To show task list. Type “2” then press enter to choose the “Show task list” option from the options menu.
+Then the application will show every task individually that are filtered by the due date. It will also shows every task’s number, title, project and whether the task is done or not.
+
+3. Edit task option.
+In this option the user can update, mark as done or remove tasks.
+To edit task. type “3” then press enter to choose the “Edit task” option from the options menu.
+
+3.1. Update task.
+3.1.1. To update task, type “update” then press enter.
+3.1.2. Type the task number that is wanted to update then press enter.
+3.1.3. Type the new task title name then press enter.
+3.1.4. Type the new task due date like the following date form (dd.mm.yyyy) then press enter.
+3.1.5. Type the new task project name then press enter.
+3.1.6. To go back to options menu, type “back” then press enter.
+
+3.2. Mark a task as done.
+3.2.1. To mark a task as done, type “mark as done” then press enter.
+3.2.2. Type the number of the task that is wanted to mark as done then press enter.
+3.2.3. To go back to the options menu, type “back” then press enter.
+
+3.3. Remove a task.
+3.3.1. To remove a task, type “remove” then press enter.
+3.3.2. Type the number of the task that is wanted to be removed then press enter.
+3.3.3. To go back to the options menu type “back” then press enter.
+
+4. Exit from the application.
+To exit from the application type “exit” then press enter.
+The application will automatically save user’s tasks information for the next use.
+
+Service support:
+For more help please contact us via e-mail:
+nis1189@hotmail.com

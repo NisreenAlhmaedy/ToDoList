@@ -27,10 +27,10 @@ public class TaskDTO implements Serializable , Comparable<TaskDTO>{
 /**
  *Creates a new instance.
  *
- *@param title  task title.
- *@param dueDate the day the task must be finished.
- *@param status the status that can be assigned to a task.
- *@param project project which the task belong to.
+ *@param title  the task title.
+ *@param dueDate the last day that the task must be done.
+ *@param status the status that assigned to the task.
+ *@param project the project which the task belong to.
  *
  */
     public TaskDTO(String title, Date dueDate , boolean status , String project ) {
@@ -44,7 +44,7 @@ public class TaskDTO implements Serializable , Comparable<TaskDTO>{
         return title ;
     }
     /**
-     * @return project which the task belong to.
+     * @return the project name which the task belong to.
      */
     public String getTaskProject(){
         return project ;
@@ -66,7 +66,7 @@ public class TaskDTO implements Serializable , Comparable<TaskDTO>{
         }
 
 /**
- *converting the due date from Date type to String type
+ * Converting the due date from Date type to String type
  *@return due date as a String type
  */
     public String getDateToString() {
@@ -74,7 +74,7 @@ public class TaskDTO implements Serializable , Comparable<TaskDTO>{
     }
 
 /**
- * converting the due date which is taken from the user as
+ * Converting the due date which is taken from the user as
  * a string type to Date type
  * @param dueDateFromUser date as a String type
  * @return due date as a Date type
